@@ -16,10 +16,12 @@ namespace ATM_ASP.NET_MVC.Controllers
         }
 
         // GET: CheckingAccount/Details/5
-        public ActionResult Details()
+        public ActionResult Details( int id)
         {
-           
-            return View();
+            var accoutDetails = db.CheckingAccounts.SingleOrDefault(account => account.Id == id);
+            if (accoutDetails == null)
+                return Content("No result TO Show");
+            return View(accoutDetails);
         }
         // GET: CheckingAccount/Create
         public ActionResult Create()

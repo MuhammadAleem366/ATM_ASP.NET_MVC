@@ -1,11 +1,11 @@
 ﻿@model ATM_ASP.NET_MVC.Models.Transaction
 
 @{
-    ViewBag.Title = "Deposit";
+    ViewBag.Title = "Withdrawal";
 }
 <div class="row">
     <div class="col-md-4 col-md-offset-4">
-        <h2>Deposit Amount</h2>
+        <h2>Withdrawal Amount</h2>
 
 
         @using (Html.BeginForm())
@@ -13,17 +13,17 @@
             @Html.AntiForgeryToken()
 
             <div class="form-horizontal">
-                
+
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Amount )
+                    @Html.LabelFor(model => model.Amount)
 
-                    @Html.TextBoxFor(model => model.Amount, new { @class = "form-control" } )
+                    @Html.TextBoxFor(model => model.Amount, new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
                 </div>
                 <div class="form-group">
-                    <div >
-                        <input type="submit" value="Deposit" class="btn btn-primary btn-block" />
+                    <div>
+                        <input type="submit" value="Withdraw" class="btn btn-primary btn-block" />
                     </div>
                 </div>
             </div>

@@ -157,7 +157,7 @@ namespace ATM_ASP.NET_MVC.Controllers
                 {
                     
                     var db = new ApplicationDbContext();
-                    var accountNumber = (123456 + db.CheckingAccounts.Count()).ToString().PadLeft(10, '0');
+                    var accountNumber = (123457 + db.CheckingAccounts.Count()).ToString().PadLeft(10, '0');
                     var checkingAccount = new CheckingAccount
                     {
                         AccountNo = accountNumber,
