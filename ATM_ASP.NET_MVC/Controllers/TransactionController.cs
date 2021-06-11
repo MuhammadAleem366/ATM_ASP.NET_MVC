@@ -39,6 +39,8 @@ namespace ATM_ASP.NET_MVC.Controllers
             {
                 var checkAccount = db.CheckingAccounts.SingleOrDefault(m => m.Id == transaction.CheckingAccountId);
                 checkAccount.Balance += transaction.Amount;
+                transaction.TransactionType = "Deposit";
+                transaction.TransactionDate = DateTime.Now;
                 db.Transactions.Add(transaction);
                 db.SaveChanges();
                 return RedirectToAction("Index", "Home");
@@ -60,7 +62,7 @@ namespace ATM_ASP.NET_MVC.Controllers
 
             if (!ModelState.IsValid)
             {
-                throw new Exception();
+                throw  new Exception();
             }
             else
             {
@@ -72,7 +74,10 @@ namespace ATM_ASP.NET_MVC.Controllers
                 else
                 {
                     userAccount.Balance = userAccount.Balance - transaction.Amount;
+                    transaction.TransactionDate = DateTime.Now;
+                    transaction.TransactionType = "Withdrawal";
                     db.Transactions.Add(transaction);
+                    
                     db.SaveChanges();
                 }
             

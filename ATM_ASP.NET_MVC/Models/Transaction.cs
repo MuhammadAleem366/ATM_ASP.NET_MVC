@@ -14,7 +14,9 @@ namespace ATM_ASP.NET_MVC.Models
         [DataType(DataType.Currency)]
         public decimal Amount { get; set; }
 
+        public DateTime TransactionDate { get; set; }
 
+        public string TransactionType { get; set; }
         public virtual CheckingAccount CheckingAccount { get; set; }
         [Required]
         public int CheckingAccountId { get; set; }

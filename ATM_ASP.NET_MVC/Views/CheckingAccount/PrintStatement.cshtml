@@ -7,20 +7,35 @@
     <div class="col-md-6 col-md-offset-3 margin-top-20" style="border:1px solid grey;">
         <h2 class="text-center text-info">Bank Statement</h2>
         <div class="row">
-            <h5 class="col-md-4">Name @Model.Name</h5>
-            <h5 class="col-md-4">Account No# @Model.AccountNo</h5>
-            <h5 class="col-col-md-4">Closing Balance @Model.Balance</h5>
+            <h5 class="col-md-6 text-center">@Model.Name</h5>
+            <h5 class="col-md-6 text-center" ># @Model.AccountNo</h5>
         </div>
-        
-        @{ 
-           var transactions = Model.Transactions.ToList();
+
+        @{
+            var transactions = Model.Transactions.ToList();
         }
-        
-    <ul class="list-group">
-        @foreach (var transaction in transactions)
-        {
-            <li class="list-group-item" style="border:none">@transaction.Amount</li>
-        }
-    </ul>
+        <table class="table table-bordered table-striped text-center">
+            <thead>
+                <tr>
+                    <td>Amount</td>
+                    <td>Type</td>
+                    <td>Date</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var transaction in transactions)
+                {
+                    <tr>
+                        <td class="list-group-item col-md-4" style="border:none">@transaction.Amount</td>
+                        <td class="list-group-item col-md-4" style="border:none">@transaction.TransactionType</td>
+                        <td class="list-group-item col-md-4" style="border:none">@transaction.TransactionDate.ToLongDateString()</td>
+
+                    </tr>
+
+                }
+            </tbody>
+
+        </table>
+        <p class="text-center text-info">Closing Balance @Model.Balance</p>
     </div>
 </div>

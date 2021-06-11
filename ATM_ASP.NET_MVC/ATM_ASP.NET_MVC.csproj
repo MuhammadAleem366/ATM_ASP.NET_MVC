@@ -188,6 +188,10 @@
     <Compile Include="Migrations\202106041036593_TransactionModels.Designer.cs">
       <DependentUpon>202106041036593_TransactionModels.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202106111121126_ApplyPropDateAndTypeToTransactions.cs" />
+    <Compile Include="Migrations\202106111121126_ApplyPropDateAndTypeToTransactions.Designer.cs">
+      <DependentUpon>202106111121126_ApplyPropDateAndTypeToTransactions.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CheckingAccount.cs" />
@@ -287,6 +291,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106041036593_TransactionModels.resx">
       <DependentUpon>202106041036593_TransactionModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106111121126_ApplyPropDateAndTypeToTransactions.resx">
+      <DependentUpon>202106111121126_ApplyPropDateAndTypeToTransactions.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

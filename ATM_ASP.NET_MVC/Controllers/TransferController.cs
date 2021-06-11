@@ -47,12 +47,16 @@ namespace ATM_ASP.NET_MVC.Controllers
                 var transaction1 = new Transaction
                 {
                     Amount = transfer.Transaction.Amount,
+                    TransactionType = "Withdrawal",
+                    TransactionDate=DateTime.Now,
                     CheckingAccountId = sourceAccount.Id
 
                 };
                 var transaction2 = new Transaction
                 {
                     Amount = transfer.Transaction.Amount,
+                    TransactionType = "Deposit",
+                    TransactionDate = DateTime.Now,
                     CheckingAccountId = destinationAccount.Id
                 };
                 db.Transactions.Add(transaction1);
