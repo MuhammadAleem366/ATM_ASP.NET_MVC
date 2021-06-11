@@ -88,5 +88,16 @@ namespace ATM_ASP.NET_MVC.Controllers
                 return View();
             }
         }
+
+        public ActionResult PrintStatement(int checkingAccountId)
+        {
+
+            var accountHolder = db.CheckingAccounts.Find(checkingAccountId);
+            if (accountHolder == null)
+            {
+                return HttpNotFound();
+            }
+            return View(accountHolder);
+        }
     }
 }
