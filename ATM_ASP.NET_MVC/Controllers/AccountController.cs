@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using ATM_ASP.NET_MVC.Models;
+using ATM_ASP.NET_MVC.Services;
 
 namespace ATM_ASP.NET_MVC.Controllers
 {
@@ -156,18 +157,9 @@ namespace ATM_ASP.NET_MVC.Controllers
                 if (result.Succeeded)
                 {
                     
-                    var db = new ApplicationDbContext();
-                    var accountNumber = (123457 + db.CheckingAccounts.Count()).ToString().PadLeft(10, '0');
-                    var checkingAccount = new CheckingAccount
-                    {
-                        AccountNo = accountNumber,
-                        FirstName = model.FirstName,
-                        LastName = model.LastName,
-                        Balance = 0,
-                        ApplicationUserId = user.Id
-                    };
-                    db.CheckingAccounts.Add(checkingAccount);
-                    db.SaveChanges();
+                    
+                    var service = new CheckingAccountService(new ApplicationDbContext());
+                    service.CreateAccount(model.FirstName, model.LastName, 1000, user.Id);                  
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771

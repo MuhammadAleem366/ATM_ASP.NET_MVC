@@ -8,7 +8,7 @@ namespace ATM_ASP.NET_MVC
     {
         public void Configuration(IAppBuilder app)
         {
-            ConfigureAuth(app);
+            ConfigureAuth(app); 
         }
     }
 }
