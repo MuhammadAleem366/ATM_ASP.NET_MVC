@@ -25,3 +25,20 @@ textarea {
 .margin-top-20{
     margin-top:20px;
 }
+.navbar {
+    background-color: #2A1A1F;
+    color: white;
+    font-size: 18px;
+    font-family: Calibri;
+    font-weight: bold;
+}
+
+.main-link {
+    border-radius: 15px 50px;
+    vertical-align: middle;
+    height: 75px;
+    padding: 24px 0px;
+    font-size: 24px; 
+}.main-link:hover{
+  font-size:25px;
+ }
