@@ -266,6 +266,7 @@
     <Content Include="Views\Transaction\Withdrawal.cshtml" />
     <Content Include="Views\Transfer\TransferFund.cshtml" />
     <Content Include="Views\CheckingAccount\PrintStatement.cshtml" />
+    <Content Include="Views\CheckingAccount\PrintAllAccountHolders.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

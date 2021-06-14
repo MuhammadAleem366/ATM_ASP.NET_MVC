@@ -4,11 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ATM_ASP.NET_MVC.Models;
+using Microsoft.AspNet.Identity;
 namespace ATM_ASP.NET_MVC.Controllers
 {
-    public class TransactionController : Controller
+    
+     public class TransactionController : Controller
     {
-
+        
         private ApplicationDbContext db;
         public TransactionController()
         {
@@ -35,7 +37,7 @@ namespace ATM_ASP.NET_MVC.Controllers
         [HttpPost]
         public ActionResult Deposit(Transaction transaction)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid )
             {
                 var checkAccount = db.CheckingAccounts.SingleOrDefault(m => m.Id == transaction.CheckingAccountId);
                 checkAccount.Balance += transaction.Amount;

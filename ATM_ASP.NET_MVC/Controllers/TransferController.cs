@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using ATM_ASP.NET_MVC.Models;
 using ATM_ASP.NET_MVC.ViewModels;
+using Microsoft.AspNet.Identity;
 namespace ATM_ASP.NET_MVC.Controllers
 {
     public class TransferController : Controller
@@ -21,24 +22,26 @@ namespace ATM_ASP.NET_MVC.Controllers
         // GET: Transfer/TransferFund
         
         [Authorize]
-        public ActionResult TransferFund(int checkingAccountId)
+        public ActionResult TransferFund()
         {
-            if (checkingAccountId == 0)
-            {
-                return RedirectToAction("Index", "Home");
-            }
             return View();
         }
         [HttpPost]
-        public ActionResult TransferFund(int checkingAccountId ,TransferViewModel transfer)
+        public ActionResult TransferFund(TransferViewModel transfer)
         {
-            var sourceAccount = db.CheckingAccounts.SingleOrDefault(account => account.Id == checkingAccountId);
+            var userId = User.Identity.GetUserId();
+            var sourceAccount = db.CheckingAccounts.SingleOrDefault(account => account.ApplicationUserId == userId);
             var destinationAccount = db.CheckingAccounts.
                 SingleOrDefault(account => account.AccountNo == transfer.CheckingAccount.AccountNo);
-            if (destinationAccount == null || sourceAccount.Balance < transfer.Transaction.Amount 
-                || sourceAccount==null || destinationAccount.AccountNo == sourceAccount.AccountNo)
+            if ( sourceAccount.Balance < transfer.Transaction.Amount )
             {
-                throw new Exception();
+                ModelState.AddModelError("Transaction.Amount","Your balance is insufficient To make this Transaction");
+                return View();
+            }
+            else if(destinationAccount.AccountNo == sourceAccount.AccountNo)
+            {
+                ModelState.AddModelError("CheckingAccount.AccountNo", "OOPS!! You are Tranfering Funds to Your own Account");
+                return View();
             }
             else
             {

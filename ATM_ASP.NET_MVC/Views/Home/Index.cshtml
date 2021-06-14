@@ -12,18 +12,18 @@
             <span class="glyphicon glyphicon-flash"></span>
             Quick Cash 5,000 Rs.
         </a>
-        <a  href="@Url.Action("PrintStatement","CheckingAccount",new {checkingAccountId=ViewBag.CheckingAccountId })" class="btn btn-primary btn-block btn-lg main-link ">
+        <a  href="@Url.Action("PrintStatement","CheckingAccount")" class="btn btn-primary btn-block btn-lg main-link ">
             <span  class="glyphicon glyphicon-print"></span>
             Print Statement
         </a>
     </div>
 
     <div class="col-md-6 margin-top-20">
-        <a style="border-radius:50px 15px;" href="@Url.Action("Details","CheckingAccount",new {id=ViewBag.CheckingAccountId })" class="btn main-link btn-primary btn-block btn-lg ">
+        <a style="border-radius:50px 15px;" href="@Url.Action("Details","CheckingAccount")" class="btn main-link btn-primary btn-block btn-lg ">
             <span class="glyphicon glyphicon-question-sign"></span>
             Balance Inquiry
         </a>
-        <a style="border-radius:50px 15px;" href="@Url.Action("TransferFund","Transfer",new { checkingAccountId=ViewBag.CheckingAccountId})" class="btn main-link btn-primary btn-block btn-lg ">
+        <a style="border-radius:50px 15px;" href="@Url.Action("TransferFund","Transfer")" class="btn main-link btn-primary btn-block btn-lg ">
             <span class="glyphicon glyphicon-transfer"></span>
             Transfer Funds
         </a>
